@@ -1,12 +1,13 @@
 import { ref, Ref, onMounted } from 'vue'
 import axios from 'axios'
+import { Services } from '@/@types';
 
 // This composable is a simplified example for the exercise.
 // Feel free to leave as-is, modify, or remove this file (and any others) as desired.
 // https://vuejs.org/guide/reusability/composables.html
 
 export default function useServices(): any {
-  const services: Ref<any[]> = ref([])
+  const services: Ref<Services> = ref([])
   const loading = ref(false)
 
   const getServices = async (): Promise<void> => {
@@ -17,7 +18,7 @@ export default function useServices(): any {
     const result = await axios.get('/api/service_packages')
 
     // Store data in Vue ref
-    services.value = result.data
+    services.value = Services(result.data)
 
     // Reset loading state
     loading.value = false
