@@ -1,5 +1,5 @@
 <template>
-  <button type="button" :id="`${props.id}-item`" @click="toggle" class="flex flex-col justify-between text-left border rounded-lg border-gray-300 cursor-pointer p-4 w-full" >
+  <button type="button" :id="`${props.id}-item`" @click="toggle" class="flex flex-col justify-between text-left border rounded-lg border-gray-300 cursor-pointer p-4 w-full h-full" >
     <p class="text-xl text-blue-700 font-medium mb-2">
         {{ props.name }}
     </p>

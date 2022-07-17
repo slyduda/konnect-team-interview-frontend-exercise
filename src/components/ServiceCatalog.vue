@@ -14,20 +14,22 @@
       </div>
     </div>
     <div>
-      <ul
-        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8"
+      <Pagination
+        :classes="`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8`"
+        :amount="20"
+        :items="services"
       >
-        <CatalogItem
-          v-for="service in services"
-          :key="service.id"
-          :id="service.id"
-          :name="service.name"
-          :description="service.description"
-          :enabled="service.enabled"
-          :versions="service.versions"
-          class="service"
-        />
-      </ul>
+        <template v-slot:item="{ id, name, description, enabled, versions }">
+          <CatalogItem
+            :id="id"
+            :name="name"
+            :description="description"
+            :enabled="enabled"
+            :versions="versions"
+            class="service"
+          />
+        </template>
+      </Pagination>
     </div>
   </div>
 </template>
@@ -35,6 +37,7 @@
 <script lang="ts" setup>
 import { defineComponent, ref } from 'vue'
 import CatalogItem  from './CatalogItem.vue';
+import Pagination from './Pagination.vue';
 import BaseButton from './BaseButton.vue';
 import useServices from '@/composables/useServices'
 
