@@ -25,26 +25,16 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import { defineComponent, ref } from 'vue'
 import useServices from '@/composables/useServices'
 
-export default defineComponent({
-  name: 'ServiceCatalog',
-  setup() {
-    // Import services from the composable
-    const { services, loading } = useServices()
+// Import services from the composable
+const { services, loading } = useServices()
 
-    // Set the search string to a Vue ref
-    const searchQuery = ref('')
+// Set the search string to a Vue ref
+const searchQuery = ref('')
 
-    return {
-      services,
-      loading,
-      searchQuery,
-    }
-  },
-})
 </script>
 
 <style lang="scss" scoped>
