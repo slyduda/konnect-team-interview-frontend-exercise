@@ -2,31 +2,29 @@
   <div class="service-catalog">
     <div>
       <div>
-        <h1>Services</h1>
+        <h1 class="text-3xl font-bold text-blue-900">Services</h1>
         <KInput
           v-model="searchQuery"
           class="search-input"
           placeholder="Search services"
         />
       </div>
-      <KButton>Hi</KButton>
+      <KButton>Search More</KButton>
     </div>
     <div>
       <ul
         class="catalog"
       >
-        <li
+        <CatalogItem
           v-for="service in services"
           :key="service.id"
+          :id="service.id"
+          :name="service.name"
+          :description="service.description"
+          :enabled="service.enabled"
+          :versions="service.versions"
           class="service"
-        >
-          <div>
-            <p>
-              {{ service.name }}
-            </p>
-            <p>{{ service.description }}</p>
-          </div>
-        </li>
+        />
       </ul>
     </div>
   </div>
@@ -34,6 +32,7 @@
 
 <script lang="ts" setup>
 import { defineComponent, ref } from 'vue'
+import CatalogItem  from './CatalogItem.vue';
 import useServices from '@/composables/useServices'
 
 // Import services from the composable
@@ -59,11 +58,9 @@ const searchQuery = ref('')
 }
 
 .service {
-  width: 200px;
-  margin: 6px;
-  border: 1px solid #999;
-  border-radius: 10px;
-  padding: 8px 16px;
+  width: 240px;
+  margin-right: 24px;
+  margin-bottom: 24px;
 
   p:first-of-type {
     color: #333;

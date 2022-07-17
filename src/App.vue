@@ -1,17 +1,17 @@
 <template>
   <header>
-    <div class="nav">
+    <div class="nav border-b">
       <router-link to="/">
-        <img src="@/assets/konnect_logo.png" alt="" class="logo" >
+        <img src="@/assets/konnect_logo.png" alt="" class="h-10 py-3" >
       </router-link>
       <div id="rightNav">
-        <button class="nav-button">
+        <button class="ml-6">
           <KIcon icon="notificationInbox" size="24"/>
         </button>
-        <button class="nav-button">
+        <button class="ml-6">
           <KIcon icon="help" size="28"/>
         </button>
-        <button id="userIcon">
+        <button class="h-10 w-10 bg-gray-800 rounded-full ml-6">
           
         </button>
       </div>
@@ -31,14 +31,9 @@ import { RouterView } from 'vue-router'
 html {
   margin: 0;
   padding: 0;
-  font-size: 10px;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  font-weight: 400;
-  font-size: 1.6rem;
-  line-height: 1.2;
   margin: 0 auto;
 }
 
@@ -60,7 +55,6 @@ header {
   padding-top: 8px;
   padding-bottom: 8px;
   margin-bottom: 4rem;
-  border-bottom: 1px solid #333;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -90,11 +84,6 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.logo {
-  height: 20px;
-  padding: 8px;
 }
 
 #userIcon {
