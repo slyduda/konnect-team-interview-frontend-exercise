@@ -1,23 +1,34 @@
 <template>
   <div class="service-catalog">
-    <h1>Service Catalog</h1>
-    <KInput />
-    <ul
-      class="catalog"
-    >
-      <li
-        v-for="service in services"
-        :key="service.id"
-        class="service"
+    <div>
+      <div>
+        <h1>Services</h1>
+        <KInput
+          v-model="searchQuery"
+          class="search-input"
+          placeholder="Search services"
+        />
+      </div>
+      <KButton>Hi</KButton>
+    </div>
+    <div>
+      <ul
+        class="catalog"
       >
-        <div>
-          <p>
-            {{ service.name }}
-          </p>
-          <p>{{ service.description }}</p>
-        </div>
-      </li>
-    </ul>
+        <li
+          v-for="service in services"
+          :key="service.id"
+          class="service"
+        >
+          <div>
+            <p>
+              {{ service.name }}
+            </p>
+            <p>{{ service.description }}</p>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
