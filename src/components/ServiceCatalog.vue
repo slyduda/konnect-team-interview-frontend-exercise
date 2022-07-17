@@ -1,11 +1,7 @@
 <template>
   <div class="service-catalog">
     <h1>Service Catalog</h1>
-    <input
-      v-model="searchQuery"
-      class="search-input"
-      placeholder="Search services"
-    >
+    <KInput />
     <ul
       class="catalog"
     >
