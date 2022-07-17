@@ -1,19 +1,21 @@
 <template>
   <div class="service-catalog">
     <div>
-      <div>
+      <div class="flex w-full justify-between mb-4 items-end">
         <h1 class="text-3xl font-bold text-blue-900">Services</h1>
+        <BaseButton rounded color="blue" size="sm">Add New Service</BaseButton>
+      </div>
+      <div class="flex w-full justify-between mb-12">
         <KInput
           v-model="searchQuery"
           class="search-input"
           placeholder="Search services"
         />
       </div>
-      <KButton>Search More</KButton>
     </div>
     <div>
       <ul
-        class="catalog"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8"
       >
         <CatalogItem
           v-for="service in services"
@@ -33,6 +35,7 @@
 <script lang="ts" setup>
 import { defineComponent, ref } from 'vue'
 import CatalogItem  from './CatalogItem.vue';
+import BaseButton from './BaseButton.vue';
 import useServices from '@/composables/useServices'
 
 // Import services from the composable
@@ -58,9 +61,6 @@ const searchQuery = ref('')
 }
 
 .service {
-  width: 240px;
-  margin-right: 24px;
-  margin-bottom: 24px;
 
   p:first-of-type {
     color: #333;
