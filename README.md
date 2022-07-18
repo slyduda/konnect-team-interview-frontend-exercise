@@ -1,5 +1,61 @@
 # Welcome
 
+## Notes
+
+Adding notes below based on changes made and thought process throughout development.
+
+#### Type Guards
+
+The first thing that I wanted to achieve in this assessment was adding strong Typing for out database models. 
+
+- Pros
+
+One of the most important things when dealing with REST APIs is making sure that models and properties are well documented because small discrepancies in types or between specific endpoints might make things fail. I brought in some Type Guards and created simple User and Service Types based on the API examples present. If there is ever any change in an endpoint that the app will consume during development the components should break during runtime and we can throw whatever error we need to in order to flag it before it reaches testing, staging, or production. 
+
+- Cons
+
+Adding Type Guards is slightly more cumbersome than adding simple types since we have to convert our object once it reaches our app so the downside here is that if we ever want the flexibility of having a property missing we will have to do some refactoring.
+
+#### Setup Notation for Composition API
+
+The second thing that I wanted to do was convert the defineSetup notation to a setup notation for code simplification and matching our programming pattern closer to that of a the Functional Frontend patter that we are seeing more from the community (due to some changes in React)
+
+- Pros
+
+Our code is a lot more clean. We are able to cut lines out and rearrange functions and refs in places that make our application more readable.
+
+- Cons
+
+This is a slightly different pattern than present in current Kong frontend applications so refactoring would take some time. Setup notation requires adding some additional eslint rules to rule out some errors (which I haven't done yet due to time constraints)
+
+#### Kongponents
+
+Added Kongponents to get more familiar with the the components available. I opted to only use the KIcons in the navbar and the KInput for the search to mainly utilize Tailwind based components that I had available to showcase more setup notation composition API.
+
+- Pros
+
+Kongponents are the branded components. They include icons, styles, etc so that we don't have to worry about building components from scratch.
+
+- Cons
+
+No real cons here other than the disparity caused by two style libraries. I added Tailwind later in this project to show my familiarity with it seeing that Tailwind is used in custom components on the Front-End that this position would be working with.
+
+#### General Layout
+
+Setting up the layout of the navbar and changing the logo. No real comments here
+
+#### Catalog Item Component
+
+Added a Catalog Item component. It is a button itself that opens a modal of the same information with the version details present. Title can be clicked to bring us to a new route that shows futher Service details (not yet implemented). Correct aria and role labels were used to play nicely with screen readers. I made the design choice to make the element directly below it so that we could avoid messing with deep emits or using the store. Tabbing works out of the box due to this choice, but would be fine at the root of the app with good aria labels and roles.
+
+- Pros
+
+Pro of designing the component this way is we don't have to use the store. We casn simply place a modal in each component that opens up when the root element is clicked.
+
+- Cons
+
+More than one component can be opened during tabbing or if there is an error in modal background styling. For now it works well, but longer term we may want to have a single "ServiceModal" component that is opened on Catalog Item click.
+
 ## Goal
 
 Make this Vue 3 app as close to [this mock](https://www.figma.com/file/zeaWiePnc3OCe34I4oZbzN/Service-Card-List?node-id=0%3A1) as possible while utilizing best-practices, coding standards, and great code to improve the example codebase.
