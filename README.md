@@ -42,7 +42,7 @@ No real cons here other than the disparity caused by two style libraries. I adde
 
 #### General Layout
 
-Setting up the layout of the navbar and changing the logo. No real comments here
+Setting up the layout of the navbar and changing the logo. Navbar is very simple and I would like to additional functionality to the user component ie togglable dropdown.
 
 #### Catalog Item Component
 
