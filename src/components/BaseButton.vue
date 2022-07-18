@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { defineProps, withDefaults } from 'vue';
 
-
 interface Props {
   disabled?: boolean;
   type?: string;
@@ -122,9 +121,6 @@ const rounded =
     ]"
     style="transform-style: preserve-3d"
   >
-    <span v-if="props.icon">
-      <FontAwesomeIcon :icon="icon.def" />
-    </span>
     <slot>
       {{ text }}
     </slot>

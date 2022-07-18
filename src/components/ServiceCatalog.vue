@@ -16,8 +16,9 @@
     <div>
       <Pagination
         :classes="`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8`"
-        :amount="20"
-        :items="services"
+        :amount="12"
+        :items="searchQuery ? filtered : services"
+        :loading="loading"
       >
         <template v-slot:item="{ id, name, description, enabled, versions }">
           <CatalogItem
@@ -35,18 +36,23 @@
 </template>
 
 <script lang="ts" setup>
-import { defineComponent, ref } from 'vue'
+import { computed, defineComponent, ref, Ref } from 'vue'
 import CatalogItem  from './CatalogItem.vue';
 import Pagination from './Pagination.vue';
 import BaseButton from './BaseButton.vue';
 import useServices from '@/composables/useServices'
+import { Service } from '@/@types';
 
 // Import services from the composable
-const { services, loading } = useServices()
+interface UseServices {
+  services: Ref<Service[]>,
+  loading: Ref<boolean>
+}
+const { services, loading }: UseServices = useServices()
 
 // Set the search string to a Vue ref
 const searchQuery = ref('')
-
+const filtered = computed(() => services.value.filter((service: Service) => Object.values(service).some((property: any) => typeof property === 'string' && property.toLowerCase().includes(searchQuery.value.toLowerCase()))))
 </script>
 
 <style lang="scss" scoped>
