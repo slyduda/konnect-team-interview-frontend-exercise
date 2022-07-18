@@ -13,4 +13,12 @@ describe('ServiceCatalog', () => {
 
     cy.get('.search-input').should('be.visible').invoke('attr', 'placeholder').should('eq', 'Search services')
   })
+
+  it('shows a button to add a new service', () => {
+    mount(ServiceCatalog)
+  })
+
+  it('shows a list of all services', () => {
+    mount(ServiceCatalog)
+  })
 })

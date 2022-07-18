@@ -1,4 +1,4 @@
-import { Service } from '@/@types';
+import { Service } from '@/@types'
 
 export interface State {
   services: Service[];
@@ -6,4 +6,4 @@ export interface State {
 
 export const state: State = {
   services: [],
-};
+}

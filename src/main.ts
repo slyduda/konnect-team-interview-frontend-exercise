@@ -6,7 +6,6 @@ import Kongponents from '@kong/kongponents'
 import '../node_modules/@kong/kongponents/dist/style.css'
 import './index.css'
 
-
 const app = createApp(App)
 
 app.use(createPinia())

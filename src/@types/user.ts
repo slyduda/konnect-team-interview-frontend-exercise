@@ -10,16 +10,15 @@ import { string, number, boolean, array, object } from './guards'
 //     "active": true
 // },
 
-
 // We are creating this with the assumption that these are all of the available properties for EVERY endpoint that presents us a User object
 export const User = object({
-    id: string,
-    fullName: string,
-    preferredName: string, // Depending on database setup this may also present us with a null value 
-    email: string,
-    createdAt: string, // I personally like to convert times into ints and handle the client side conversion after, but for this exercise I will keep it as a String
-    updatedAt: string,
-    active: boolean
+  id: string,
+  fullName: string,
+  preferredName: string, // Depending on database setup this may also present us with a null value
+  email: string,
+  createdAt: string, // I personally like to convert times into ints and handle the client side conversion after, but for this exercise I will keep it as a String
+  updatedAt: string,
+  active: boolean,
 })
 
 export const Users = array(User)

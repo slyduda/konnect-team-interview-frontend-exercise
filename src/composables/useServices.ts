@@ -1,6 +1,6 @@
 import { ref, Ref, onMounted } from 'vue'
 import axios from 'axios'
-import { Services } from '@/@types';
+import { Services } from '@/@types'
 
 // This composable is a simplified example for the exercise.
 // Feel free to leave as-is, modify, or remove this file (and any others) as desired.

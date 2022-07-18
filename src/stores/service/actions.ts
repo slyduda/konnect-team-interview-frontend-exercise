@@ -1,11 +1,11 @@
-import { ActionTree, ActionContext } from 'vuex';
+import { ActionTree, ActionContext } from 'vuex'
 
-import { RootState } from '@/store';
-import { State } from './state';
-import { Mutations } from './mutations';
+import { RootState } from '@/store'
+import { State } from './state'
+import { Mutations } from './mutations'
 
-import { ServiceActionTypes as ActionTypes } from './types/actions';
-import { ServiceMutationTypes as MutationTypes } from './types/mutations';
+import { ServiceActionTypes as ActionTypes } from './types/actions'
+import { ServiceMutationTypes as MutationTypes } from './types/mutations'
 
 type AugmentedActionContext = {
   commit<K extends keyof Mutations>(
@@ -15,9 +15,9 @@ type AugmentedActionContext = {
 } & Omit<ActionContext<State, RootState>, 'commit'>;
 
 export interface Actions {
-  
+
 }
 
 export const actions: ActionTree<State, RootState> & Actions = {
 
-};
+}

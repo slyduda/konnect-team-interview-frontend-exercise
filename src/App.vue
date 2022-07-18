@@ -2,18 +2,28 @@
   <header class="z-10">
     <div class="nav border-b">
       <router-link to="/">
-        <img src="@/assets/konnect_logo.png" alt="" class="h-10 py-3" >
+        <img
+          alt=""
+          class="h-10 py-3"
+          src="@/assets/konnect_logo.png"
+        >
       </router-link>
       <div id="rightNav">
         <button class="ml-6">
-          <KIcon icon="notificationInbox" size="24" class="align-bottom"/>
+          <KIcon
+            class="align-bottom"
+            icon="notificationInbox"
+            size="24"
+          />
         </button>
         <button class="ml-6">
-          <KIcon icon="help" size="28" class="align-bottom"/>
+          <KIcon
+            class="align-bottom"
+            icon="help"
+            size="28"
+          />
         </button>
-        <button class="h-10 w-10 bg-gray-800 rounded-full ml-6">
-          
-        </button>
+        <button class="h-10 w-10 bg-gray-800 rounded-full ml-6" />
       </div>
     </div>
   </header>
@@ -41,7 +51,6 @@ ul {
     padding: 0;
     list-style-type: none;
 }
-
 
 header {
   position: sticky;
@@ -72,7 +81,7 @@ header {
 button {
   background: none;
   cursor: pointer;
-} 
+}
 
 #rightNav {
   display: flex;
