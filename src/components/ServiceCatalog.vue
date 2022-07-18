@@ -5,10 +5,11 @@
         <h1 class="text-3xl font-bold text-blue-900">Services</h1>
         <BaseButton rounded color="blue" size="sm">Add New Service</BaseButton>
       </div>
-      <div class="flex w-full justify-between mb-12">
+      <div class="flex w-full justify-between mb-12 w-72">
         <KInput
           v-model="searchQuery"
-          class="search-input"
+          @input="updateServices"
+          class="search-input w-100"
           placeholder="Search services"
         />
       </div>
@@ -17,7 +18,7 @@
       <Pagination
         :classes="`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8`"
         :amount="12"
-        :items="searchQuery ? filtered : services"
+        :items="filtered"
         :loading="loading"
       >
         <template v-slot:item="{ id, name, description, enabled, versions }">
@@ -36,7 +37,8 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, defineComponent, ref, Ref } from 'vue'
+import { computed, defineComponent, ref, Ref, watch } from 'vue'
+import { debounce } from '@/composables/useDebounce'
 import CatalogItem  from './CatalogItem.vue';
 import Pagination from './Pagination.vue';
 import BaseButton from './BaseButton.vue';
@@ -51,8 +53,22 @@ interface UseServices {
 const { services, loading }: UseServices = useServices()
 
 // Set the search string to a Vue ref
-const searchQuery = ref('')
-const filtered = computed(() => services.value.filter((service: Service) => Object.values(service).some((property: any) => typeof property === 'string' && property.toLowerCase().includes(searchQuery.value.toLowerCase()))))
+const searchQuery = ref('f')
+const filtered: Ref<Service[]> = ref([]) 
+const filtering = ref(false)
+
+const filter = () => {
+  filtered.value = services.value.filter(
+    (service: Service) => Object.values(service).some(
+      (property: any) => typeof property === 'string' && property.toLowerCase().includes(searchQuery.value.toLowerCase()
+      )
+    )
+  )
+  filtering.value = false
+}
+
+watch(loading, (loading, prevLoading) => filter())
+const updateServices = debounce(filter, 1000)
 </script>
 
 <style lang="scss" scoped>

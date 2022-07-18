@@ -1,15 +1,15 @@
 <template>
-  <header>
+  <header class="z-10">
     <div class="nav border-b">
       <router-link to="/">
         <img src="@/assets/konnect_logo.png" alt="" class="h-10 py-3" >
       </router-link>
       <div id="rightNav">
         <button class="ml-6">
-          <KIcon icon="notificationInbox" size="24"/>
+          <KIcon icon="notificationInbox" size="24" class="align-bottom"/>
         </button>
         <button class="ml-6">
-          <KIcon icon="help" size="28"/>
+          <KIcon icon="help" size="28" class="align-bottom"/>
         </button>
         <button class="h-10 w-10 bg-gray-800 rounded-full ml-6">
           

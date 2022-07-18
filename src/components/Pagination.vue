@@ -12,9 +12,9 @@
     </ul>
     <div v-if="!props.loading" class="mt-8 w-full flex justify-center text-sm text-blue-700 font-semibold">
       <div class="flex max-w-md w-full justify-between">
-        <button :class="[{'bg-blue-50': currentPage != 1 }, {'bg-gray-100': currentPage != 1 }]" class="w-12 flex justify-center rounded-full bg-blue-50 w-12 h-12 flex justify-center items-center border border-blue-700" @click="decrease">←</button>
+        <button :class="[{'bg-blue-50 border-blue-700 text-blue-700': currentPage != 1 }, {'bg-gray-100 border-gray-700 text-gray-700': currentPage == 1 }]" class="w-12 flex justify-center rounded-full bg-blue-50 w-12 h-12 flex justify-center items-center border border-blue-700" @click="decrease">←</button>
         <div class="flex justify-center items-center">{{ amount * (currentPage - 1) }} - {{ amount * currentPage }} of {{ items.length }}</div>
-        <button :class="[{'bg-blue-50': currentPage < totalPages}, {'bg-gray-100': currentPage >= totalPages}]" class="w-12 flex justify-center rounded-full w-12 h-12 flex justify-center items-center border border-blue-700" @click="increase">→</button>
+        <button :class="[{'bg-blue-50 border-blue-700 text-blue-700': currentPage < totalPages}, {'bg-gray-100 border-gray-700 text-gray-700': currentPage >= totalPages}]" class="w-12 flex justify-center rounded-full w-12 h-12 flex justify-center items-center border " @click="increase">→</button>
       </div>
     </div>
   </div>
