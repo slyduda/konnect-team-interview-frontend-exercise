@@ -6,7 +6,7 @@ Adding notes below based on changes made and thought process throughout developm
 
 #### Type Guards
 
-The first thing that I wanted to achieve in this assessment was adding strong Typing for out database models. 
+The first thing that I wanted to achieve in this assessment was adding strong Typing for our database models. 
 
 - Pros
 
@@ -18,11 +18,11 @@ Adding Type Guards is slightly more cumbersome than adding simple types since we
 
 #### Setup Notation for Composition API
 
-The second thing that I wanted to do was convert the defineSetup notation to a setup notation for code simplification and matching our programming pattern closer to that of a the Functional Frontend patter that we are seeing more from the community (due to some changes in React)
+The second thing that I wanted to do was convert the defineSetup notation to a setup notation for code simplification and matching our programming pattern closer to that of the functional programming patterns that we are seeing more from the frontend community (heavily due to some changes in React)
 
 - Pros
 
-Our code is a lot more clean. We are able to cut lines out and rearrange functions and refs in places that make our application more readable.
+Our code is a lot cleaner. We are able to cut lines out and rearrange functions and refs in places that make our application more readable.
 
 - Cons
 
@@ -30,7 +30,7 @@ This is a slightly different pattern than present in current Kong frontend appli
 
 #### Kongponents
 
-Added Kongponents to get more familiar with the the components available. I opted to only use the KIcons in the navbar and the KInput for the search to mainly utilize Tailwind based components that I had available to showcase more setup notation composition API.
+Added Kongponents to get more familiar with the components available. I opted to only use the KIcons in the navbar and the KInput for the search to mainly utilize Tailwind based components that I had available to showcase more setup notation composition API.
 
 - Pros
 
@@ -46,15 +46,56 @@ Setting up the layout of the navbar and changing the logo. No real comments here
 
 #### Catalog Item Component
 
-Added a Catalog Item component. It is a button itself that opens a modal of the same information with the version details present. Title can be clicked to bring us to a new route that shows futher Service details (not yet implemented). Correct aria and role labels were used to play nicely with screen readers. I made the design choice to make the element directly below it so that we could avoid messing with deep emits or using the store. Tabbing works out of the box due to this choice, but would be fine at the root of the app with good aria labels and roles.
+Added a Catalog Item component. It is a button itself that opens a modal of the same information with the version details present. Title can be clicked to bring us to a new route that shows further Service details (not yet implemented). Correct aria and role labels were used to play nicely with screen readers. I made the design choice to make the element directly below it so that we could avoid messing with deep emits or using the store. Tabbing works out of the box due to this choice, but would be fine at the root of the app with good aria labels and roles.
 
 - Pros
 
-Pro of designing the component this way is we don't have to use the store. We casn simply place a modal in each component that opens up when the root element is clicked.
+Pro of designing the component this way is we don't have to use the store. We can simply place a modal in each component that opens up when the root element is clicked.
 
 - Cons
 
 More than one component can be opened during tabbing or if there is an error in modal background styling. For now it works well, but longer term we may want to have a single "ServiceModal" component that is opened on Catalog Item click.
+
+#### Pagination Component
+
+Added a Pagination Component using the slot item pattern available in the Vue3 docs. At the top of my head, I believe this is the same pattern that the Catalog Component available in the Kongponents does as well, but I wanted to build something from scratch based on patterns that I have used previously for grid pagination.
+
+- Pros
+
+Making changes to CatalogItem components is easy and won't break our Pagination component. I added some customization options like page amount, but I would like to do more with like filters, listing pages to skip faster, etc
+
+- Cons
+
+I made it with only our Service catalog in mind so it is not very reusable at the moment.
+
+#### Search functionality
+
+Found a basic text search function on stack overflow and made it typed. It is a simple search function. In the future, I would like to add fuzzy text search along with colon delimiters to get similar functionality to that of Github search for example. Added a debounce to make it easier on the users eyes. This would be more important if we were querying the database but since we load everything before mount, it is just for UX.
+
+#### Store Revision
+
+I didn't use the store for reasons mentioned above. I am assuming that the scope of this app would require us to use it at one point. I am not very familiar with pinia so I didn't want to spend a lot of time making it strongly typed. I did create a subfolder for a services module that is strongly typed based on vuex to prep us for adding this functionality to the store, when refactoring slightly for pinia. When we do have a functioning store we will be able to leverage information about the Services all throughout the app. This would grant us the ability to make single service modals so that the user doesn't accidentally double up as mentioned earlier.
+
+#### Tests
+
+I added skeletons of tests for a couple components. Included in each are some suggestions for tests in each component that we should ensure. These tests are not yet implemented and serve as a basis for a couple of things we should be testing in each of our components. Given more time I would spend a good amount of time finishing these tests, cutting styling bloat, and then linting properly.
+
+## Considerations 
+
+#### Typescript
+Focused heavily on strongly typing our app and making sure the API model matched our types in runtime.
+
+#### Tests
+Need to hash out tests for each component more.
+
+#### Routing
+Added a dynamic service route accessible from the service modal that pops up on CatalogItem click. Additional views were out of scope for this assessment.
+
+#### Pinia State
+Added strongly typed skeleton for Service store submodule, but is in vuex right now.
+
+#### Other Items
+Refactored code to leverage Vue Composition API specifically with setup notation to match functional programming patterns.
 
 ## Goal
 
