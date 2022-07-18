@@ -61,7 +61,7 @@ interface UseServices {
 const { services, loading }: UseServices = useServices()
 
 // Set the search string to a Vue ref
-const searchQuery = ref('f')
+const searchQuery = ref('')
 const filtered: Ref<Service[]> = ref([])
 const filtering = ref(false)
 
